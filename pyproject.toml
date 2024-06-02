@@ -1,13 +1,16 @@
+[project.urls]
+Homepage = "https://github.com/jcgutier/jcgutier-logger"
+Issues = "https://github.com/jcgutier/jcgutier-logger/issues"
+
 [tool.poetry]
 name = "jcgutier-logger"
 version = "0.1.0"
-description = ""
+description = "Logging configuration"
 authors = ["Juan Carlos Gutierrez <jgutierrez@contractor.ea.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
-
+python = "^3.6"
 
 [build-system]
 requires = ["poetry-core"]
