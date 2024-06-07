@@ -3,10 +3,12 @@ repos:
     rev: 24.4.2
     hooks:
       - id: black
+        args: [--line-length, "79"]
   - repo: https://github.com/PyCQA/flake8
     rev: 7.0.0
     hooks:
       - id: flake8
+        args: [--exclude=jcgutier_logger/__init__.py]
   - repo: https://github.com/timothycrosley/isort
     rev: 5.13.2
     hooks:
@@ -28,4 +30,5 @@ repos:
             "-rn", # Only display messages
             "-sn", # Don't display the score
             "--disable=R0903",
+            "--ignore=__init__.py",
           ]

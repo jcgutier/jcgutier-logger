@@ -1,3 +1,14 @@
+# Python
 *.pyc
+
+# Visual studio code
 .vscode
+
+# For packaging
 dist
+
+# Pytest coverage
+.coverage
+
+# Pyenv
+.python-version

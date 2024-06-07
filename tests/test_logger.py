@@ -2,17 +2,37 @@
 
 """Test for logger"""
 
-from unittest.mock import patch
+import logging
 
-from jcgutier_logger.logger import Logger
+from jcgutier_logger import Logger
 
 
-class TestLogger:
-    """Test for Logger class"""
+def test_logger_debug_mode():
+    """Test logger in DEBUG mode"""
+    # Create a Logger instance with debug mode enabled
+    logger_instance = Logger(debug=True)
 
-    @patch("jcgutier_logger.logger.Logger.setup_logging")
-    def test_logger(self, mock):
-        """Test for looger"""
-        logger = Logger(False)
-        assert not logger.debug
-        mock.assert_called()
+    # Capture the logger's configuration
+    logger = logger_instance.get_logger()
+
+    # Check if the root logger's level is set to DEBUG
+    assert logging.getLogger().level == logging.DEBUG
+
+    # Check if the handler's level is set to DEBUG
+    for handler in logger.handlers:
+        if isinstance(handler, logging.StreamHandler):
+            assert handler.level == logging.DEBUG
+
+
+def test_logger_non_debug_mode():
+    """Test logger on NON DEBUG mode"""
+    # Create a Logger instance with debug mode disabled
+    logger_instance = Logger(debug=False)
+
+    # Capture the logger's configuration
+    logger = logger_instance.get_logger()
+
+    # Check if the handler's level is set to INFO
+    for handler in logger.handlers:
+        if isinstance(handler, logging.StreamHandler):
+            assert handler.level == logging.INFO
